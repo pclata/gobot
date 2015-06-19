@@ -1,0 +1,21 @@
+{
+	"irc_server": {
+		"server": "irc.internal.shutterfly.com",
+		"port": "6667",
+		"channels": "#storage"
+	},
+	"bot": {
+		"name": "ccpbot"
+	},
+	"anthracite": {
+		"URL": "https://anthracite.internal.shutterfly.com",
+		"resource": "/events/add/script"
+	},
+	"match_str": {
+		"search_string": "CCP-"
+	},
+	"search_keywords": ["CCP-","ccp-"],
+	"start_keywords": ["start","begin","resum","continu"],
+	"end_keywords": ["complet","done","paus"],
+	"blacklist": ["rbot"]
+}

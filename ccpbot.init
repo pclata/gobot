@@ -1,0 +1,64 @@
+#!/bin/bash
+#
+# ccpbot	go IRC bot
+#
+# chkconfig: 35 70 30
+# description: Go IRC bot that posts CCP events to Anthracite
+# processname: ccpbot
+# https://blog.hazrulnizam.com/create-init-script-centos-6/
+
+# Source function library
+. /etc/init.d/functions
+
+RETVAL=0
+prog="ccpbot"
+LOCKFILE=/var/lock/subsys/$prog
+
+CCPBOT_DIR=/var/sysadmin/scripts/ircbot
+CCPBOT=$CCPBOT_DIR/ccpbot
+
+start() {
+	echo -n "Starting $prog: "
+	daemon $prog -f ${CONFIG}
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && touch $LOCKFILE
+	echo
+	return $RETVAL
+}	
+
+stop() {
+	echo -n "Shutting down $prog: "
+	killproc $prog
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && rm -f $LOCKFILE
+	echo
+	return $RETVAL
+}
+
+status() {
+	echo -n "Checking $prog status: "
+	daemon --check $prog
+	RETVAL=$?
+	return $RETVAL
+}
+
+case "$1" in
+    start)
+	start
+	;;
+    stop)
+	stop
+	;;
+    status)
+    	status
+	;;
+    restart)
+    	stop
+	start
+	;;
+    *)
+	echo "Usage: $prog {start|stop|status|reload|restart[|probe]"
+	exit 1
+	;;
+esac
+exit $?
