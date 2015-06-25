@@ -1,14 +1,14 @@
 {
 	"irc_server": {
-		"server": "irc.internal.shutterfly.com",
+		"server": "irc.com",
 		"port": "6667",
-		"channels": "#storage"
+		"channels": "#channel"
 	},
 	"bot": {
 		"name": "ccpbot"
 	},
 	"anthracite": {
-		"URL": "https://anthracite.internal.shutterfly.com",
+		"URL": "https://anthracite.com",
 		"resource": "/events/add/script"
 	},
 	"match_str": {
